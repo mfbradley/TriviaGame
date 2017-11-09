@@ -1,14 +1,23 @@
 body {
+    max-width: 1280px;
     background-image: url("https://images4.alphacoders.com/242/242556.png");
 }
+
 
 .jumbotron {
     margin-top: 20px;
     background-color: #eee;
     color: #4c6564;
     text-align: center;
-    font-family: 'Jim Nightshade', cursive;
-    font-size: 180px;
+    font-size: 18px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 .btn {
@@ -21,14 +30,21 @@ body {
     background: transparent;
 }
 
-.question {
+.question,
+.doneButton {
     background-color: #eee;
+    color: #4c6564;
     opacity: .8;
     border-radius: 15px;
     text-align: center;
-    font-size: 18px
+    font-size: 16px
+}
+
+.doneButton {
+    padding-top: 15px;
+    color: #4c6564;
 }
 
 p {
-    font-size: 22px;
+    font-size: 18px;
 }
