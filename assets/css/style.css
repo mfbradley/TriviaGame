@@ -1,0 +1,34 @@
+body {
+    background-image: url("https://images4.alphacoders.com/242/242556.png");
+}
+
+.jumbotron {
+    margin-top: 20px;
+    background-color: #eee;
+    color: #4c6564;
+    text-align: center;
+    font-family: 'Jim Nightshade', cursive;
+    font-size: 180px;
+}
+
+.btn {
+    background-color: #cfb473;
+    color: black;
+}
+
+.col {
+    background-color: grey;
+    background: transparent;
+}
+
+.question {
+    background-color: #eee;
+    opacity: .8;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px
+}
+
+p {
+    font-size: 22px;
+}
