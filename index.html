@@ -11,128 +11,142 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row jumbotron">
-            <div class="col-sm-12 col-md-12">
-                <h1>The Game Behind the Thrones Trivia! </h1>
-                <h2>How well do you know your beloved GOT actors and actresses?</h2>
-                <h2>Time Remaining: <span id="countdownTimer">400</span></h2>
+    <div id="wrapper" class="container">
+        <div class="container">
+            <div class="row jumbotron">
+                <div class="col-sm-12 col-md-12">
+                    <h1>The Game Behind the Thrones Trivia! </h1>
+                    <h2>How well do you know your beloved GOT actors and actresses?</h2>
+                    <h2>Time Remaining: <span id="countdownTimer">40</span></h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row question">
+                <div class="col-sm-12 col-md-12">
+                    <p>Which two characters have matching tatoos of the date they landed their GOT roles?</p>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Ygritte and Jon Snow</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Cersei and Jamie Lannister</label>
+                    </div>
+                    <div class="checkbox" data-value="correct">
+                        <label><input type="checkbox">Sansa and Arya Stark</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Daenerys and Tyrion</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row question">
+                <div class="col-sm-12 col-md-12">
+                    <p>Which character was almost cast as Jon Snow?</p>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Gendry</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Theon Greyjoy</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Podrick Payne</label>
+                    </div>
+                    <div class="checkbox" data-value="correct">
+                        <label><input type="checkbox">Ramsay Bolton</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row question">
+                <div class="col-sm-12 col-md-12">
+                    <p>Which Stark adopted his/her dierwolf in real life?</p>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Bran</label>
+                    </div>
+                    <div class="checkbox" data-value="correct">
+                        <label><input type="checkbox">Sansa</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Arya</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Rickon</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row question">
+                <div class="col-sm-12 col-md-12">
+                    <p>Which actor got into a fight at a McDonald's the night before his audition, resulting in a black eye that helped him land the role?</p>
+                    <div class="checkbox" data-value="correct">
+                        <label><input type="checkbox">Kit Harrington</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Jason Momoa</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Peter Dinklage</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Jerome Flynn</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row question">
+                <div class="col-sm-12 col-md-12">
+                    <p>Which GOT characters used to date in real life?</p>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Hodor and Gilly</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Jon Snow and Ygritte</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Sansa and Gendry</label>
+                    </div>
+                    <div class="checkbox" data-value="correct">
+                        <label><input type="checkbox">Cersei and Bronn</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row question">
+                <div class="col-sm-12 col-md-12">
+                    <p>Which two characters were besties before the show began filming?</p>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Tormund and Brienee of Tarth</label>
+                    </div>
+                    <div class="checkbox" data-value="correct">
+                        <label><input type="checkbox">Tyrion and Cersei</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Khal Drogo and The Mountain</label>
+                    </div>
+                    <div class="checkbox" data-value="incorrect">
+                        <label><input type="checkbox">Katyln Stark and Cersei</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row doneButton">
+                <div class="col-sm-12 col-md-12">
+                    <p><a id="done" class="btn btn-primary btn-lg" role="button">Done!</a></p>
+                </div>
             </div>
         </div>
     </div>
-    <br>
-    <div class="container">
-        <div class="row question">
+
+    <div id="results" class="container">
+        <div class="row jumbotron">
             <div class="col-sm-12 col-md-12">
-                <p>Which two characters have matching tatoos of the date they landed their GOT roles?</p>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Ygritte and Jon Snow</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Cersei and Jamie Lannister</label>
-                </div>
-                <div class="checkbox" data-value="correct">
-                    <label><input type="checkbox">Sansa and Arya Stark</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Daenerys and Tyrion</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row question">
-            <div class="col-sm-12 col-md-12">
-                <p>Which character was almost cast as Jon Snow?</p>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Gendry</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Theon Greyjoy</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Podrick Payne</label>
-                </div>
-                <div class="checkbox" data-value="correct">
-                    <label><input type="checkbox">Ramsay Bolton</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row question">
-            <div class="col-sm-12 col-md-12">
-                <p>Which Stark adopted his/her dierwolf in real life?</p>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Bran</label>
-                </div>
-                <div class="checkbox" data-value="correct">
-                    <label><input type="checkbox">Sansa</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Arya</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Rickon</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row question">
-            <div class="col-sm-12 col-md-12">
-                <p>Which actor got into a fight at a McDonald's the night before his audition, resulting in a black eye that helped him land the role?</p>
-                <div class="checkbox" data-value="correct">
-                    <label><input type="checkbox">Kit Harrington</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Jason Momoa</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Peter Dinklage</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Jerome Flynn</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row question">
-            <div class="col-sm-12 col-md-12">
-                <p>Which GOT characters used to date in real life?</p>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Hodor and Gilly</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Jon Snow and Ygritte</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Sansa and Gendry</label>
-                </div>
-                <div class="checkbox" data-value="correct">
-                    <label><input type="checkbox">Cersei and Bronn</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row question">
-            <div class="col-sm-12 col-md-12">
-                <p>Which two characters were besties before the show began filming?</p>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Tormund and Brienee of Tarth</label>
-                </div>
-                <div class="checkbox" data-value="correct">
-                    <label><input type="checkbox">Tyrion and Cersei</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Khal Drogo and The Mountain</label>
-                </div>
-                <div class="checkbox" data-value="incorrect">
-                    <label><input type="checkbox">Katyln Stark and Cersei</label>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row doneButton">
-            <div class="col-sm-12 col-md-12">
-                <p><a id=done class="btn btn-primary btn-lg" href="results.html" role="button">Done!</a></p>
+                <h1>Results! </h1>
+                <p>Correct Answers: <span id="correctAnswers"></span></p>
+                <h2>Incorrect Answers: <span id="incorrectAnswers"></span></h2>
+                <h2>Unanswered Questions: <span id="unansweredQuestions"></span></h2>
+                <p><a href="title.html" class="btn btn-primary btn-lg" href="#" role="button">Click to Try Again!</a></p>
             </div>
         </div>
     </div>

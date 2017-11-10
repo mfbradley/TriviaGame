@@ -2,7 +2,7 @@
 window.onload = function() {
     $("#start").on("click", start);
 
-    var time = 400;
+    var time = 40;
     var intervalId;
 
 
@@ -29,31 +29,43 @@ window.onload = function() {
     }
 
     start();
+
+    // ANSWER BUTTONS AND RESULTS
+    var correctAnswerCount = 0;
+    var incorrectAnswerCount = 0;
+    var unansweredCount = 0;
+    var answerChosen = false;
+
+    $("#results").hide();
+
+    $(".checkbox").click(function() {
+        var userAnswer = $(this).attr('data-value');
+        console.log(userAnswer);
+        answerChosen = true;
+
+        if (userAnswer === "correct") {
+            correctAnswerCount++;
+            console.log(correctAnswerCount);
+        }
+
+        else if (userAnswer === "incorrect") {
+            incorrectAnswerCount++;
+            console.log(incorrectAnswerCount);
+        }
+
+        else {
+            unansweredCount++;
+            console.log(unansweredCount);
+        }
+    });
+
+    $("#done").click(function() {
+        $("#wrapper").hide();
+        $("#results").show();
+        document.getElementById("correctAnswers").innerHTML = correctAnswerCount;
+        document.getElementById("incorrectAnswers").innerHTML = incorrectAnswerCount;
+        document.getElementById("unansweredQuestions").innerHTML = unansweredCount;
+
+
+    });
 };
-
-// ANSWER BUTTONS AND RESULTS
-var correctAnswerCount = 0;
-var incorrectAnswerCount = 0;
-var unansweredCount = 0;
-
-$(".checkbox").click(function() {
-    var userAnswer = $(this).attr('data-value');
-    console.log(userAnswer);
-
-    if (userAnswer === "correct") {
-        correctAnswerCount++;
-        $("#correctAnswers").text(correctAnswerCount);
-        console.log(correctAnswerCount);
-    }
-
-    else if (userAnswer === "incorrect") {
-        incorrectAnswerCount++;
-        $("#incorrectAnswers").text(incorrectAnswerCount);
-        console.log(incorrectAnswerCount);
-    }
-
-    else {
-        $("#unansweredQuestions").text(unansweredCount);
-        console.log(unansweredCount);
-    }
-});
