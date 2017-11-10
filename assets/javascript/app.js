@@ -67,6 +67,7 @@ window.onload = function() {
     });
 
     $("#done").click(function() {
+        stop();
         $("#wrapper").hide();
         $("#results").show();
         document.getElementById("correctAnswers").innerHTML = correctAnswerCount;
@@ -79,5 +80,21 @@ window.onload = function() {
         $("#results").hide();
         $("#wrapper").hide();
         $("#title").show();
+        resetGame();
     });
+
+    function resetGame() {
+        correctAnswerCount = 0;
+        incorrectAnswerCount = 0;
+        unansweredCount = 0;
+        time = 40;
+        $("#countdownTimer").text(time);
+        $('input[name="q1"]').prop('checked', false);
+        $('input[name="q2"]').prop('checked', false);
+        $('input[name="q3"]').prop('checked', false);
+        $('input[name="q4"]').prop('checked', false);
+        $('input[name="q5"]').prop('checked', false);
+        $('input[name="q6"]').prop('checked', false);
+
+    }
 };
