@@ -1,16 +1,20 @@
 // START BUTTON AND COUNTDOWN TIMER
 window.onload = function() {
-    $("#start").on("click", start);
+    $("#wrapper").hide();
+    $("#results").hide();
+    $("#title").show();
 
     var time = 40;
     var intervalId;
 
+    $("#start").on("click", function() {
 
-    function start() {
+
         intervalId = setInterval(decrement, 1000);
         console.log(time);
-    }
-
+        $("#title").hide();
+        $("#wrapper").show();
+    });
 
     function decrement() {
         time--;
@@ -20,7 +24,9 @@ window.onload = function() {
         if (time === 0) {
             stop();
             alert("Oops! You ran out of time!");
-            window.location.href = "results.html";
+            $("#title").hide();
+            $("#wrapper").hide();
+            $("#results").show();
         }
     }
 
@@ -28,13 +34,14 @@ window.onload = function() {
         clearInterval(intervalId);
     }
 
-    start();
+
 
     // ANSWER BUTTONS AND RESULTS
     var correctAnswerCount = 0;
     var incorrectAnswerCount = 0;
     var unansweredCount = 0;
     var answerChosen = false;
+    var choosingAnswer = 'choosing answer';
 
     $("#results").hide();
 
@@ -66,6 +73,11 @@ window.onload = function() {
         document.getElementById("incorrectAnswers").innerHTML = incorrectAnswerCount;
         document.getElementById("unansweredQuestions").innerHTML = unansweredCount;
 
+    });
 
+    $("#tryAgain").click(function() {
+        $("#results").hide();
+        $("#wrapper").hide();
+        $("#title").show();
     });
 };
