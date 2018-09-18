@@ -45,8 +45,6 @@ window.onload = function () {
     var correctAnswerCount = 0;
     var incorrectAnswerCount = 0;
     var unansweredCount = 0;
-    var answerChosen = false;
-    var choosingAnswer = 'choosing answer';
 
     function renderQuestions() {
         for (var i = 0; i < qA.length; i++) {
@@ -55,6 +53,22 @@ window.onload = function () {
             for (var j = 0; j < qA[i].a.length; j++) {
                 gameArea.append("<input type='radio' name='q-" + i + "' value='" + qA[i].a[j] + "'>" + qA[i].a[j] + "<br>");
             }
+        }
+    }
+
+    function checkAnswers() {
+        for (var i = 0; i < qA.length; i++) {
+            $.each($("input[name='q-" + i + "']:checked"), function () {
+                if ($(this).val() === qA[i].correct) {
+                    console.log("correct!")
+                    correctAnswerCount++
+                }
+                else {
+                    console.log("incorrect")
+                    incorrectAnswerCount++
+                }
+            });
+
         }
     }
 
@@ -76,11 +90,19 @@ window.onload = function () {
         clearInterval(intervalId);
     }
 
+    function resetGame() {
+        correctAnswerCount = 0;
+        incorrectAnswerCount = 0;
+        unansweredCount = 0;
+        time = 40;
+        gameArea.empty();
+        $("#countdownTimer").text(time);
+
+    }
+
     $("#wrapper").hide();
     $("#results").hide();
     $("#title").show();
-
-
 
     $("#start").on("click", function () {
         intervalId = setInterval(decrement, 1000);
@@ -90,30 +112,14 @@ window.onload = function () {
         $("#wrapper").show();
     });
 
-    function checkAnswers() {
-        for (var i = 0; i < qA.length; i++) {
-            $.each($("input[name='q-" + i + "']:checked"), function () {
-                if ($(this).val() === qA[i].correct) {
-                    console.log("correct!")
-                    correctAnswerCount++
-                }
-                else {
-                    console.log("incorrect")
-                    incorrectAnswerCount++
-                }
-            });
-
-        }
-    }
-
     $("#done").click(function () {
         checkAnswers();
         stop();
         $("#wrapper").hide();
         $("#results").show();
-        document.getElementById("correctAnswers").innerHTML = correctAnswerCount;
-        document.getElementById("incorrectAnswers").innerHTML = incorrectAnswerCount;
-        document.getElementById("unansweredQuestions").innerHTML = unansweredCount;
+        $("#correctAnswers").text(correctAnswerCount);
+        $("#incorrectAnswers").text(incorrectAnswerCount);
+        $("#unansweredQuestions").text(unansweredCount);
 
     });
 
@@ -124,19 +130,5 @@ window.onload = function () {
         resetGame();
     });
 
-    function resetGame() {
-        correctAnswerCount = 0;
-        incorrectAnswerCount = 0;
-        unansweredCount = 0;
-        time = 40;
-        gameArea.empty();
-        $("#countdownTimer").text(time);
-        $('input[name="q-1"]').prop('checked', false);
-        $('input[name="q-2"]').prop('checked', false);
-        $('input[name="q-3"]').prop('checked', false);
-        $('input[name="q-4"]').prop('checked', false);
-        $('input[name="q-5"]').prop('checked', false);
-        $('input[name="q-6"]').prop('checked', false);
 
-    }
 };
