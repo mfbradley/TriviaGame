@@ -82,7 +82,11 @@ window.onload = function () {
 
         if (time === 0) {
             stop();
+            checkAnswers();
             alert("Oops! You ran out of time!");
+            $("#correctAnswers").text(correctAnswerCount);
+            $("#incorrectAnswers").text(incorrectAnswerCount);
+            $("#unansweredQuestions").text(unansweredCount);
             $("#title").hide();
             $("#wrapper").hide();
             $("#results").show();
