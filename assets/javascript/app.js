@@ -1,15 +1,4 @@
-// START BUTTON AND COUNTDOWN TIMER
 
-/* 
-            
-           
-            
-            
-            <div class="row doneButton">
-                <div class="col-sm-12 col-md-12">
-                    <p id="done" class="btn btn-primary btn-lg" role="button">Done!</p>
-                </div>
-            </div> */
 window.onload = function() {
  
     var qA = [
@@ -49,6 +38,15 @@ window.onload = function() {
         }
     ]
 
+    var gameArea = $("#questionsHere");
+
+    for (var i = 0; i < qA.length; i++) {
+        gameArea.append("<h3>" + qA[i].q + "</h3>");
+
+        for (var j = 0; j < qA[i].a.length; j++) {
+            gameArea.append("<input type='radio' name='question-" + i + "'>" + qA[i].a[j] + "<br>");
+        }
+    }
     
     $("#wrapper").hide();
     $("#results").hide();
