@@ -1,22 +1,22 @@
 
-window.onload = function() {
- 
+window.onload = function () {
+
     var qA = [
         {
             q: "Which two characters have matching tatoos of the date they landed their GOT roles?",
-            a: ["Ygritte and Jon Snow", "Cersei and Jamie Lannister", "Sansa and Arya Stark", "Daenerys and Tyrion"], 
+            a: ["Ygritte and Jon Snow", "Cersei and Jamie Lannister", "Sansa and Arya Stark", "Daenerys and Tyrion"],
             correct: "Sansa and Arya Stark"
         },
 
         {
             q: "Which character was almost cast as Jon Snow?",
-            a: ["Gendry", "Theon Greyjoy", "Podrick Payne", "Ramsay Bolton"], 
+            a: ["Gendry", "Theon Greyjoy", "Podrick Payne", "Ramsay Bolton"],
             correct: "Ramsay Bolton"
 
         },
 
         {
-            q: "Which Stark adopted his/her dierwolf in real life?", 
+            q: "Which Stark adopted his/her dierwolf in real life?",
             a: ["Bran", "Sansa", "Arya", "Rickon"],
             correct: "Sansa"
         },
@@ -39,30 +39,24 @@ window.onload = function() {
     ]
 
     var gameArea = $("#questionsHere");
-
-    for (var i = 0; i < qA.length; i++) {
-        gameArea.append("<h3>" + qA[i].q + "</h3>");
-
-        for (var j = 0; j < qA[i].a.length; j++) {
-            gameArea.append("<input type='radio' name='question-" + i + "'>" + qA[i].a[j] + "<br>");
-        }
-    }
-    
-    $("#wrapper").hide();
-    $("#results").hide();
-    $("#title").show();
-
     var time = 40;
     var intervalId;
+    // ANSWER BUTTONS AND RESULTS
+    var correctAnswerCount = 0;
+    var incorrectAnswerCount = 0;
+    var unansweredCount = 0;
+    var answerChosen = false;
+    var choosingAnswer = 'choosing answer';
 
-    $("#start").on("click", function() {
+    function renderQuestions() {
+        for (var i = 0; i < qA.length; i++) {
+            gameArea.append("<h3>" + qA[i].q + "</h3>");
 
-
-        intervalId = setInterval(decrement, 1000);
-        console.log(time);
-        $("#title").hide();
-        $("#wrapper").show();
-    });
+            for (var j = 0; j < qA[i].a.length; j++) {
+                gameArea.append("<input type='radio' name='question-" + i + "' value='" + qA[i].a[j] + "'>" + qA[i].a[j] + "<br>");
+            }
+        }
+    }
 
     function decrement() {
         time--;
@@ -82,39 +76,28 @@ window.onload = function() {
         clearInterval(intervalId);
     }
 
-
-
-    // ANSWER BUTTONS AND RESULTS
-    var correctAnswerCount = 0;
-    var incorrectAnswerCount = 0;
-    var unansweredCount = 0;
-    var answerChosen = false;
-    var choosingAnswer = 'choosing answer';
-
+    $("#wrapper").hide();
     $("#results").hide();
+    $("#title").show();
 
-    $(".checkbox").click(function() {
-        var userAnswer = $(this).attr('data-value');
-        console.log(userAnswer);
-        answerChosen = true;
+    renderQuestions();
 
-        if (userAnswer === "correct") {
-            correctAnswerCount++;
-            console.log(correctAnswerCount);
-        }
-
-        else if (userAnswer === "incorrect") {
-            incorrectAnswerCount++;
-            console.log(incorrectAnswerCount);
-        }
-
-        else {
-            unansweredCount++;
-            console.log(unansweredCount);
-        }
+    $("#start").on("click", function () {
+        intervalId = setInterval(decrement, 1000);
+        console.log(time);
+        $("#title").hide();
+        $("#wrapper").show();
     });
 
-    $("#done").click(function() {
+    // function checkAnswers() {
+    //    for (var i=0; i < qA.length; i++) {
+    //        for (var j=0; j < qA[i].a.length; i++) {
+    //            if (qA[i].a[j]:checked )
+    //        }
+    //    }
+    // }
+
+    $("#done").click(function () {
         stop();
         $("#wrapper").hide();
         $("#results").show();
@@ -124,7 +107,7 @@ window.onload = function() {
 
     });
 
-    $("#tryAgain").click(function() {
+    $("#tryAgain").click(function () {
         $("#results").hide();
         $("#wrapper").hide();
         $("#title").show();
