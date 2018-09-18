@@ -53,7 +53,7 @@ window.onload = function () {
             gameArea.append("<h3>" + qA[i].q + "</h3>");
 
             for (var j = 0; j < qA[i].a.length; j++) {
-                gameArea.append("<input type='radio' name='question-" + i + "' value='" + qA[i].a[j] + "'>" + qA[i].a[j] + "<br>");
+                gameArea.append("<input type='radio' name='q-" + i + "' value='" + qA[i].a[j] + "'>" + qA[i].a[j] + "<br>");
             }
         }
     }
@@ -80,24 +80,34 @@ window.onload = function () {
     $("#results").hide();
     $("#title").show();
 
-    renderQuestions();
+
 
     $("#start").on("click", function () {
         intervalId = setInterval(decrement, 1000);
         console.log(time);
+        renderQuestions();
         $("#title").hide();
         $("#wrapper").show();
     });
 
-    // function checkAnswers() {
-    //    for (var i=0; i < qA.length; i++) {
-    //        for (var j=0; j < qA[i].a.length; i++) {
-    //            if (qA[i].a[j]:checked )
-    //        }
-    //    }
-    // }
+    function checkAnswers() {
+        for (var i = 0; i < qA.length; i++) {
+            $.each($("input[name='q-" + i + "']:checked"), function () {
+                if ($(this).val() === qA[i].correct) {
+                    console.log("correct!")
+                    correctAnswerCount++
+                }
+                else {
+                    console.log("incorrect")
+                    incorrectAnswerCount++
+                }
+            });
+
+        }
+    }
 
     $("#done").click(function () {
+        checkAnswers();
         stop();
         $("#wrapper").hide();
         $("#results").show();
@@ -119,13 +129,14 @@ window.onload = function () {
         incorrectAnswerCount = 0;
         unansweredCount = 0;
         time = 40;
+        gameArea.empty();
         $("#countdownTimer").text(time);
-        $('input[name="q1"]').prop('checked', false);
-        $('input[name="q2"]').prop('checked', false);
-        $('input[name="q3"]').prop('checked', false);
-        $('input[name="q4"]').prop('checked', false);
-        $('input[name="q5"]').prop('checked', false);
-        $('input[name="q6"]').prop('checked', false);
+        $('input[name="q-1"]').prop('checked', false);
+        $('input[name="q-2"]').prop('checked', false);
+        $('input[name="q-3"]').prop('checked', false);
+        $('input[name="q-4"]').prop('checked', false);
+        $('input[name="q-5"]').prop('checked', false);
+        $('input[name="q-6"]').prop('checked', false);
 
     }
 };
