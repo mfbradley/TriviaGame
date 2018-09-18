@@ -1,6 +1,7 @@
 
 window.onload = function () {
 
+    // VARIABLES
     var qA = [
         {
             q: "Which two characters have matching tatoos of the date they landed their GOT roles?",
@@ -41,11 +42,11 @@ window.onload = function () {
     var gameArea = $("#questionsHere");
     var time = 40;
     var intervalId;
-    // ANSWER BUTTONS AND RESULTS
     var correctAnswerCount = 0;
     var incorrectAnswerCount = 0;
     var unansweredCount = 0;
 
+    // FUNCTIONS
     function renderQuestions() {
         for (var i = 0; i < qA.length; i++) {
             gameArea.append("<h3>" + qA[i].q + "</h3>");
@@ -67,6 +68,8 @@ window.onload = function () {
                     console.log("incorrect")
                     incorrectAnswerCount++
                 }
+
+
             });
 
         }
@@ -100,13 +103,13 @@ window.onload = function () {
 
     }
 
+    // LOGIC
     $("#wrapper").hide();
     $("#results").hide();
     $("#title").show();
 
     $("#start").on("click", function () {
         intervalId = setInterval(decrement, 1000);
-        console.log(time);
         renderQuestions();
         $("#title").hide();
         $("#wrapper").show();
