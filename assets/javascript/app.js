@@ -58,20 +58,27 @@ window.onload = function () {
     }
 
     function checkAnswers() {
+
         for (var i = 0; i < qA.length; i++) {
-            $.each($("input[name='q-" + i + "']:checked"), function () {
-                if ($(this).val() === qA[i].correct) {
-                    console.log("correct!")
-                    correctAnswerCount++
-                }
-                else {
-                    console.log("incorrect")
-                    incorrectAnswerCount++
-                }
 
+            var checked = $("input[name='q-" + i + "']:checked").val();
+            
+            if(!checked) {
+                unansweredCount++
+            }
 
-            });
+            
+            else if(checked === qA[i].correct) {
+                correctAnswerCount++
+            }
 
+            else if(checked != qA[i].correct) {
+                incorrectAnswerCount++
+            }
+
+            else {
+                console.log("uh oh")
+            }
         }
     }
 
